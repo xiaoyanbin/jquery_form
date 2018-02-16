@@ -1,0 +1,34 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="dataResult.js"></script>
+</head>
+<body>
+<form class="data">
+	<div id="app">
+		<input id="exampleInputEmail1" 
+		data-dr-regexp="^\w{8}&"
+		data-dr-regexp-message="密码由数字字母和下划线"
+		data-dr-required=true
+		data-dr-required-message="输入不能为空"  />
+		
+	</div>
+</form>
+	<script type="text/javascript">
+          $(".data").dataResult({
+          	  initEvent:"blur"
+          })
+          $.fn.dataResult.extension({
+          	 "min-length":function(data){
+          	 	return this.val().length>=Number(data);
+          	 }
+          })
+
+	</script>
+	
+
+
+</body>
+</html>

@@ -2,11 +2,12 @@
    factory(jQuery,plug);
 })(this,function(jQuery,plug){
     //默认参数
+   
     var config ={
         initEvent:"input",
         plugName:"dr"
     };
-    var _RELES = {
+    var _RELES_ = {
     	"regexp":function(data){
             return new RegExp(data).test(this.val()); //true false
 
@@ -16,7 +17,8 @@
     	}
     }
     $.fn[plug] = function(options){
-    	if(this.is("form")) return;
+    	if(!this.is("form")) return;
+        console.log(options)
     	this.$find =this.find("input");
         
         $.extend(this,config,options);
@@ -41,9 +43,10 @@
     }
 
     //扩展接口
-    $.fn[plug].extension == function(options){
-    	"min-length":function(data){
-             $.extend(_RELES_,options);
-    	}
+    $.fn[plug].extension = function(options){
+        $.extend(_RELES_,options);
+/*    	"min-length" : function(data){
+             
+    	}*/
     }
 },"dataResult");
